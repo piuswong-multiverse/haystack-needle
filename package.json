@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "jest": "^29.0.3",
+    "nodemon": "^2.0.20"
+  },
+  "name": "haystack-needle",
+  "description": "Practicing loops in JS: https://app.codingrooms.com/app/course/bootcamp-part-1-%255Bswe-open-us-april-22%255D-VTZwoCN/b/b5512ef6-270b-4524-8123-996de41fa4e0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piuswong-multiverse/haystack-needle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piuswong-multiverse/haystack-needle/issues"
+  },
+  "homepage": "https://github.com/piuswong-multiverse/haystack-needle#readme"
+}
