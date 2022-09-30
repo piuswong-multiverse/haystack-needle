@@ -6,8 +6,6 @@ const myIncludes = (haystack, needle) => {
     return found;
 }
 
-myIncludes('carwash','c');
-
 
 // DO NOT EDIT BELOW
 
