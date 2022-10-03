@@ -1,6 +1,5 @@
 const myIncludes = require('./index');
 
-
 describe('how well it finds single characters in haystack', () => {
 
     it('finds single letters in "carwash"', () => {
@@ -26,6 +25,24 @@ describe('how well it finds single characters in haystack', () => {
         needle = "q";
         expect(myIncludes(haystack,needle)).toEqual(false);
         needle = ":";
+        expect(myIncludes(haystack,needle)).toEqual(false);
+    })
+
+})
+
+describe('how well it finds multiple characters in haystack', () => {
+
+    it('finds small strings in "carwash"', () => {
+        let haystack = "carwash";
+        let needle = "car";
+        expect(myIncludes(haystack,needle)).toEqual(true);
+        needle = "wash";
+        expect(myIncludes(haystack,needle)).toEqual(true);
+        needle = "ar";
+        expect(myIncludes(haystack,needle)).toEqual(true);
+        needle = "cat";
+        expect(myIncludes(haystack,needle)).toEqual(false);
+        needle = "dog";
         expect(myIncludes(haystack,needle)).toEqual(false);
     })
 
