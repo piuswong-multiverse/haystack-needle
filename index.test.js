@@ -12,7 +12,7 @@ describe('how well it finds single characters in haystack', () => {
         expect(myIncludes(haystack,needle)).toEqual(false);
     })
 
-    it('finds characters in a random sentence', () => {
+    it('finds characters in a sentence', () => {
         let haystack = "Mrs. Smith's daily goal was to improve on yesterday.";
         let needle = "M";
         expect(myIncludes(haystack,needle)).toEqual(true);
@@ -44,6 +44,24 @@ describe('how well it finds multiple characters in haystack', () => {
         expect(myIncludes(haystack,needle)).toEqual(false);
         needle = "dog";
         expect(myIncludes(haystack,needle)).toEqual(false);
+    })
+
+    it('finds characters in a sentence', () => {
+        let haystack = "Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small, unregarded yellow sun.";
+        let needle = "Fa";
+        expect(myIncludes(haystack,needle)).toEqual(true);
+        needle = "Ma";
+        expect(myIncludes(haystack,needle)).toEqual(false);
+        needle = "the";
+        expect(myIncludes(haystack,needle)).toEqual(true);
+        // needle = "sun.";
+        // expect(myIncludes(haystack,needle)).toEqual(true);
+        // needle = "small, unregarded";
+        // expect(myIncludes(haystack,needle)).toEqual(true);
+        // needle = "eastern";
+        // expect(myIncludes(haystack,needle)).toEqual(false);
+        // needle = "what?";
+        // expect(myIncludes(haystack,needle)).toEqual(false);
     })
 
 })

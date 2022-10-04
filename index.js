@@ -1,44 +1,88 @@
 const myIncludes = (haystack, needle) => {
 
-    let found = false;
+    let found;
     let indexFoundInHaystack = null;
+    let indexStartSearchHaystack = 0;
+    let loopCount = 0;
 
-    // Go through each character in the needle, finding it in the haystack in order.
-    // Avoid using premade JS search functions, to practice using loops.
-    for(let i=0; i<needle.length; i++){
-        for(let j=0; j<haystack.length; j++){
+    // Filter out weird cases
+    if(needle.length > haystack.length){
+        found = false;
+    } 
 
-            // Stop early if searching for just one character
-            if(needle.length===1){
-                if(needle[0]===haystack[j]){
-                    return true
-                }
-            } else if(needle.length>1){
-                // console.log(i,j,needle[i],haystack[indexFoundInHaystack + i]) // debug
+    // Keep searching the haystack if no definite decision has been made.
+    while(found===undefined){
 
-                // If searching for multiple characters, first find the starting index in the haystack where it's found.
-                if(needle[i]===haystack[j]){
-                    if(indexFoundInHaystack===null && i===0){
-                        indexFoundInHaystack = j;
-                        break;    
-                        // Then check if each next character matches, stopping if at the end of the needle.
-                    } else if(indexFoundInHaystack!==null && needle[i]===haystack[indexFoundInHaystack + i]){
-                        if(i===(needle.length-1)){
-                            return true;
+        // Go through each character in the needle, finding it in the haystack in order.
+        // Avoid using premade JS search functions, to practice using loops.
+        loopNeedle:
+        for(let i=0; i<needle.length; i++){
+
+            loopHaystack:
+            // Start searching the haystack at the index of interest only
+            for(let j=indexStartSearchHaystack; j<haystack.length; j++){
+
+                // Stop early if searching for just one character
+                if(needle.length===1){
+                    if(needle[0]===haystack[j]){
+                        found = true;
+                        return true
+                    }
+                } else if(needle.length>1){
+
+                    // console.log("loopCount", loopCount, "indexFoundInHaystack:",indexFoundInHaystack,"indexStartSearchHaystack:", indexStartSearchHaystack, "needle:",i,`"${needle[i]}"`,"haystack:",j,`"${haystack[indexFoundInHaystack + i]}"`) // debug
+
+                    // If searching for multiple characters, first find the starting index in the haystack where it's found.
+                    if(indexFoundInHaystack===null){
+                        if(i===0 && needle[i]===haystack[j]){
+                            indexFoundInHaystack = j;
+                            break loopHaystack; // Check the next character in needle.
                         }
-                        break;
+                    } else {
+                        // If previous chars found, then check if each next character matches, stopping if at the end of the needle.
+                        if(needle[i]===haystack[indexFoundInHaystack + i]){
+                            if(i===(needle.length-1)){
+                                found = true;
+                                return true;
+                            }
+                            break loopHaystack; // Check the next character in needle.                  
+                        } else {
+                            // If you're at the end of the needle and haystack and it's not a match...
+                            if( (i===needle.length-1) ){
+                                found = false;
+                                return false;
+                            } else {
+                                // If one of the next characters doesn't match, start over; look again starting from the same index
+                                indexStartSearchHaystack = indexFoundInHaystack + i;
+                                indexFoundInHaystack = null;
+                                break loopNeedle; // Look for the start of the needle again at the new index.
+                            }
+                        }
                     }
                 }
+
+                // Return false if completely running through needle and haystack without finding the complete needle.
+                if(i===needle.length-1 && j===haystack.length-1){
+                    found = false;
+                }
+
             }
 
-            
         }
+
+        // Return false if outer loop is running impossibly long. (additional checks)
+        if(indexStartSearchHaystack>=haystack.length || loopCount>haystack.length*needle.length){
+            found = false; 
+        }
+
+        loopCount++;
     }
 
     // By default return that it's not found; only returns true if meeting conditions above.
     return found;
 }
 
-myIncludes("carwash", "wash");
+// console.log(myIncludes("car wash", "cartttt")); // debug
+// console.log(myIncludes("Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small, unregarded yellow sun.", "sun.")); // debug
 
 module.exports = myIncludes;
