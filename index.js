@@ -1,5 +1,8 @@
-const myIncludes = (haystack, needle) => {
+// This function avoids using premade JS search functions (e.g. slice(), includes(), indexOf()...), 
+// to practice using loops and exercising more challenging algorithmic thinking.
 
+const myIncludes = (haystack, needle) => {
+    
     let found;
     let indexFoundInHaystack = null;
     let indexStartSearchHaystack = 0;
@@ -14,7 +17,6 @@ const myIncludes = (haystack, needle) => {
     while(found===undefined){
 
         // Go through each character in the needle, finding it in the haystack in order.
-        // Avoid using premade JS search functions, to practice using loops.
         loopNeedle:
         for(let i=0; i<needle.length; i++){
 

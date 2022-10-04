@@ -54,14 +54,14 @@ describe('how well it finds multiple characters in haystack', () => {
         expect(myIncludes(haystack,needle)).toEqual(false);
         needle = "the";
         expect(myIncludes(haystack,needle)).toEqual(true);
-        // needle = "sun.";
-        // expect(myIncludes(haystack,needle)).toEqual(true);
-        // needle = "small, unregarded";
-        // expect(myIncludes(haystack,needle)).toEqual(true);
-        // needle = "eastern";
-        // expect(myIncludes(haystack,needle)).toEqual(false);
-        // needle = "what?";
-        // expect(myIncludes(haystack,needle)).toEqual(false);
+        needle = "sun.";
+        expect(myIncludes(haystack,needle)).toEqual(true);
+        needle = "small, unregarded";
+        expect(myIncludes(haystack,needle)).toEqual(true);
+        needle = "eastern";
+        expect(myIncludes(haystack,needle)).toEqual(false);
+        needle = "what?";
+        expect(myIncludes(haystack,needle)).toEqual(false);
     })
 
 })
