@@ -18,3 +18,6 @@ A small project to demonstrate loops and test-driven development with Jest.
         * ``it('should find more than one matching character', () => {...})``
     * Include "negative testing" cases, or cases where inputs are outside the scope of what's expected, but which are still possible, e.g. searching for numbers and special characters in this project, or searching for longer strings in a smaller string.
     * Test outputs given inputs (A gives B), not implementation logic (how A gives B).
+
+## Deployment
+The branch called ``deploy`` is meant for deployment on Railway. To run this branch in a local development environment for Railway, checkout that branch, install railway with ``npm i -g @railway/cli``, link it with a project on Railway via login or locally, and run ``railway run npm start``. See the Railway docs for more info: https://docs.railway.app/develop/cli
