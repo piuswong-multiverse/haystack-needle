@@ -65,3 +65,24 @@ describe('how well it finds multiple characters in haystack', () => {
     })
 
 })
+
+describe('how well it handles unexpected or weird cases',() => {
+
+    it('properly deals with unusual sizes of the needle or haystack', () => {
+        expect(myIncludes("small haystack", "really really much longer needle")).toEqual(false);
+        expect(myIncludes("same string", "same string")).toEqual(true);
+        expect(myIncludes("","needle")).toEqual(false);
+        expect(myIncludes("haystack","")).toEqual(false);
+        expect(myIncludes("","")).toEqual(false);
+        expect(myIncludes("s", "s")).toEqual(true);
+    })
+
+    it('restricts non-string inputs and sends an error message', () => {
+        expect(typeof myIncludes(234,4)).toBe("string");
+        expect(typeof myIncludes("asdf",1)).toBe("string");
+        expect(typeof myIncludes(234,"n")).toBe("string");
+        expect(typeof myIncludes([2,3],["n"])).toBe("string");
+        expect(typeof myIncludes({"free": "2"},{"n":"j"})).toBe("string");
+    })
+    
+})

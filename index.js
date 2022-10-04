@@ -9,6 +9,9 @@ const myIncludes = (haystack, needle) => {
     let loopCount = 0;
 
     // Filter out weird cases
+    if(typeof haystack !== "string" || typeof needle !== "string"){
+        return 'Haystack and needle inputs must be strings (e.g. myIncludes("haystack","hay") ).'
+    }
     if(needle.length > haystack.length){
         found = false;
     } 
@@ -86,5 +89,6 @@ const myIncludes = (haystack, needle) => {
 
 // console.log(myIncludes("car wash", "cartttt")); // debug
 // console.log(myIncludes("Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small, unregarded yellow sun.", "sun.")); // debug
+// console.log(myIncludes("car wash", 34)); // debug
 
 module.exports = myIncludes;
