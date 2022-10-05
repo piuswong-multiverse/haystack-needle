@@ -11,3 +11,8 @@ form label {
 form input {
     width: 100%;
 }
+
+#result {
+    font-size: 3em;
+    text-align: center;
+}
