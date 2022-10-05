@@ -6,7 +6,7 @@
         <title>Find the Needle in the Haystack, by Pius</title>
 
         <link rel="stylesheet" href="/main.css">
-
+        <script src="/main.js"></script>
     </head>
 
     <body>
@@ -24,7 +24,7 @@
             <div>
                 Is the needle in the haystack?
             </div>
-            <form>
+            <form onsubmit="return false">
                 <label>
                     Haystack
                     <input type="text" id="haystack" />
@@ -33,7 +33,9 @@
                     Needle
                     <input type="text" id="needle" />
                 </label>
-                <input type="submit"> 
+                <button type="submit" onclick="handleSubmit()">
+                    Find the needle!
+                </button>
             </form>
             <div id="result">
 

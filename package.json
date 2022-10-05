@@ -10,7 +10,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --coverage",
-    "dev": "nodemon index",
+    "dev": "nodemon server.js",
     "start": "node server"
   },
   "repository": {
