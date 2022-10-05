@@ -12,9 +12,10 @@ const analyzeSubmission = async (haystack, needle) => {
             })
         });
         const result = await response.json();
-        console.log(result);
+        console.log("Found?", result.message);
+        document.getElementById("result").innerText = result.message;
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
 }
 

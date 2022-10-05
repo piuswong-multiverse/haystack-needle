@@ -16,8 +16,9 @@ app.get('/', (req, res) => {
 app.post('/api', async (req,res) => {
     try{
         const data = await req.body;
-        // TODO: get haystack and needle data, and run myIncludes...
-        res.send({message: `TEXT GOES HERE`})
+        let result = myIncludes(data.haystack, data.needle).toString();
+        console.log("Analyzing data:", data, "Found?", result); // debug
+        res.send({message: result})
     } catch (err) {
         res.send({message: err})
     }
